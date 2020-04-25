@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="d-flex justify-content-end">
+    <div class="d-flex justify-content-end mr-2">
         <a href="{{route('categories.create')}}" class="btn btn-success float-right mb-2"><i class="fas fa-user-plus"></i> Ajouter une catégorie</a>
     </div>
     <div class="card card-default">
@@ -9,6 +9,7 @@
             Catégories
         </div>
         <div class="card-body">
+            @if($categories->count()>0)
             <table class="table">
                 <thead>
                     <th>Nom de la catégorie</th>
@@ -26,6 +27,9 @@
                     @endforeach
                 </tbody>
             </table>
+            @else
+                <h3 class="text-center">Pas de catégorie... 😊 </h3>
+        @endif
 
             <!-- Modal -->
             <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">

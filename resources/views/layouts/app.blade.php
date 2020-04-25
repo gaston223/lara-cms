@@ -20,8 +20,8 @@
 
     <!--Bootswatch-->
     <link rel="stylesheet" href="https://bootswatch.com/4/materia/bootstrap.min.css">
-
     <script src="https://kit.fontawesome.com/3a35c19d1d.js" crossorigin="anonymous"></script>
+    @yield('css')
 </head>
 <body>
 <div id="app">
@@ -91,10 +91,16 @@
                     <div class="col-md-4">
                         <ul class="list-group">
                             <li class="list-group-item">
-                                <a href="">Articles</a>
+                                <a href="{{route('posts.index')}}">Articles</a>
                             </li>
                             <li class="list-group-item">
                                 <a href="{{route('categories.index')}}">Catégories</a>
+                            </li>
+                        </ul>
+
+                        <ul class="list-group mt-5">
+                            <li class="list-group-item">
+                                <a href="{{route('trashed-posts.index')}}">Articles archivés</a>
                             </li>
                         </ul>
                     </div>
@@ -110,9 +116,10 @@
     </main>
 </div>
 
-@yield('scripts')
+
 <!-- Scripts -->
-<script src="{{ asset('js/app.js') }}" defer></script>
+<script src="{{ asset('js/app.js') }}"></script>
+@yield('scripts')
 </body>
 
 </html>
