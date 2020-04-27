@@ -13,12 +13,14 @@
             <table class="table">
                 <thead>
                     <th>Nom de la catégorie</th>
+                    <th>Nombre de Posts</th>
                     <th></th>
                 </thead>
                 <tbody>
                     @foreach($categories as $category)
                         <tr>
                             <td>{{$category->name}}</td>
+                            <td>{{$category->posts->count()}}</td>
                             <td class="d-flex justify-content-end">
                                 <a href="{{route('categories.edit', $category->id)}}" class="btn btn-warning btn-sm mr-2"><i class="fas fa-edit"></i> Editer</a>
                                 <button class="btn btn-danger btn-sm" onclick="handleDelete({{$category->id}})"><i class="fas fa-trash"></i> Supprimer</button>

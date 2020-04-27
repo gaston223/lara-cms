@@ -42,6 +42,22 @@
                     <label for="image">Image</label>
                     <input type="file" class="form-control" name="image" id="image">
                 </div>
+
+                <div class="form-group">
+                    <label for="category">Catégorie</label>
+                    <select name="category" id="category" class="form-control">
+                        @foreach($categories as $category)
+                            <option value="{{$category->id}}"
+                            @if(isset($post))
+                                @if($category->id ===$post->category_id)
+                                    selected
+                                @endif
+                            @endif
+                            > {{$category->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+
                 <div class="form-group">
                     <button type="submit" class="btn btn-success"><i class="fas fa-folder-plus fa-lg"></i> {{isset($post) ? 'Modifier l\'article' : 'Ajouter l\'article'}} </button>
                 </div>
