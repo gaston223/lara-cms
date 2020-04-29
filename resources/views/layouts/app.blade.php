@@ -87,6 +87,13 @@
                         {{ session()->get('success') }}
                     </div>
                 @endif
+                    @if(session()->has('error'))
+
+                        <div class="alert alert-dismissible alert-danger">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            {{ session()->get('error') }}
+                        </div>
+                    @endif
                 <div class="row">
                     <div class="col-md-4">
                         <ul class="list-group">

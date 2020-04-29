@@ -10,12 +10,12 @@
         <div class="card-body">
             @if($posts->count()>0)
                 <table class="table">
-                <thead>
-                    <th>Image</th>
-                    <th>Titre</th>
-                    <th>Categorie</th>
-                    <th></th>
-                </thead>
+                    <thead>
+                        <th>Image</th>
+                        <th>Titre</th>
+                        <th>Categorie</th>
+                        <th></th>
+                    </thead>
                 <tbody>
                     @foreach($posts as $post)
                         <tr>
