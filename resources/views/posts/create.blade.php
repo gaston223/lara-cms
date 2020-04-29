@@ -10,26 +10,38 @@
                 @if(isset($post))
                     @method('PUT')
                 @endif
-                <div class="form-group">
+                <div class="form-group @error('title')has-danger @enderror">
                     <label for="title">Titre de l'article</label>
-                    <input type="text" class="form-control" name="title" id="title" placeholder="Saisissez le titre de l'article" value="{{isset($post) ? $post->title : ''}}">
+                    <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title" placeholder="Saisissez le titre de l'article" value="{{isset($post) ? $post->title : ''}}">
+                    @error('title')
+                    <div class="invalid-feedback">{{$message}}</div>
+                    @enderror
                 </div>
 
-                <div class="form-group">
+                <div class="form-group @error('description')has-danger @enderror">
                     <label for="description">Description de l'article</label>
-                    <textarea class="form-control" name="description" id="description" cols="5" rows="5">{{isset($post) ? $post->description : ''}}
+                    <textarea class="form-control @error('description')has-danger @enderror" name="description" id="description" cols="5" rows="5">{{isset($post) ? $post->description : ''}}
                     </textarea>
+                    @error('description')
+                    <div class="invalid-feedback">{{$message}}</div>
+                    @enderror
                 </div>
 
-                <div class="form-group">
+                <div class="form-group @error('content')has-danger @enderror">
                     <label for="content">Contenu de l'article</label>
-                    <input id="content" type="hidden" name="content" value="{{isset($post) ? $post->content : ''}}">
+                    <input id="content" class="form-control @error('content') is-invalid @enderror" type="hidden" name="content" value="{{isset($post) ? $post->content : ''}}">
                     <trix-editor input="content"></trix-editor>
+                    @error('content')
+                    <div class="invalid-feedback">{{$message}}</div>
+                    @enderror
                 </div>
 
-                <div class="form-group">
+                <div class="form-group @error('published_at')has-danger @enderror">
                     <label for="published_at">Date de publication</label>
-                    <input type="text" class="form-control" name="published_at" id="published_at" value="{{isset($post) ? $post->published_at : ''}}" >
+                    <input type="text" class="form-control @error('published_at') is-invalid @enderror" name="published_at" id="published_at" value="{{isset($post) ? $post->published_at : ''}}" >
+                    @error('published_at')
+                    <div class="invalid-feedback">{{$message}}</div>
+                    @enderror
                 </div>
 
                 @if(isset($post))
@@ -38,14 +50,17 @@
                     </div>
                 @endif
 
-                <div class="form-group">
+                <div class="form-group @error('image')has-danger @enderror">
                     <label for="image">Image</label>
-                    <input type="file" class="form-control" name="image" id="image">
+                    <input type="file" class="form-control @error('image') is-invalid @enderror" name="image" id="image">
+                    @error('image')
+                    <div class="invalid-feedback">{{$message}}</div>
+                    @enderror
                 </div>
 
-                <div class="form-group">
+                <div class="form-group @error('category')has-danger @enderror">
                     <label for="category">Catégorie</label>
-                    <select name="category" id="category" class="form-control">
+                    <select name="category" id="category" class="form-control  @error('category') is-invalid @enderror">
                         @foreach($categories as $category)
                             <option value="{{$category->id}}"
                             @if(isset($post))
@@ -56,6 +71,28 @@
                             > {{$category->name}}</option>
                         @endforeach
                     </select>
+                    @error('category')
+                    <div class="invalid-feedback">{{$message}}</div>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="tags">Tags</label>
+                    @if($tags->count() > 0)
+                        <select name="tags[]" id="tags" class="form-control" multiple>
+                            @foreach($tags as $tag)
+                                <option value="{{$tag->id}}"
+                                  @if(isset($post))
+                                    @if($post->hasTag($tag->id))
+                                      selected
+                                    @endif
+                                  @endif
+                                >
+                                    {{$tag->name}}
+                                </option>
+                            @endforeach
+                        </select>
+                    @endif
                 </div>
 
                 <div class="form-group">

@@ -5,14 +5,15 @@
 
     <div class="card card-default">
         <div class="card-header h5">
-            {{isset($category) ? 'Editer une Catégorie' : 'Créer une catégorie'}}
+            {{isset($tag) ? 'Editer un Tag' : 'Créer un tag'}}
         </div>
         <div class="card-body">
-            <form action="{{isset($category)? route('categories.update', $category->id): route('categories.store')}}" method="POST">
+            <form action="{{isset($tag)? route('tags.update', $tag->id): route('tags.store')}}" method="POST">
                 @csrf
-                @if(isset($category))
+                @if(isset($tag))
                     @method('PUT')
                 @endif
+
                 <div class="form-group @error('name')has-danger @enderror">
                     <label for="name">Nom de la catégorie</label>
                     <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Saisissez le nom de la catégorie" value="{{isset($category)? $category->name : '' }}">
@@ -20,8 +21,9 @@
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
                 </div>
+
                 <div class="form-group">
-                    <button class="btn btn-success">{{isset($category)? 'Editer une catégorie' : 'Ajouter une Catégorie'}}</button>
+                    <button class="btn btn-success">{{isset($tag)? 'Editer un tag' : 'Ajouter un Tag'}}</button>
                 </div>
             </form>
         </div>
