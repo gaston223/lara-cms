@@ -103,6 +103,10 @@ class CategoriesController extends Controller
      */
     public function destroy(Category $category)
     {
+        if($category->posts->count() > 0){
+            session()->flash('error','La catégorie ne peut pas être supprimée, il contient des articles !');
+            return redirect()->back();
+        }
         $category->delete();
 
         session()->flash('success','La catégorie a bien été supprimée');

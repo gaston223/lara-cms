@@ -79,7 +79,7 @@
                 <div class="form-group">
                     <label for="tags">Tags</label>
                     @if($tags->count() > 0)
-                        <select name="tags[]" id="tags" class="form-control" multiple>
+                        <select name="tags[]" id="tags" class="form-control tags-selector" multiple>
                             @foreach($tags as $tag)
                                 <option value="{{$tag->id}}"
                                   @if(isset($post))
@@ -107,16 +107,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.1/trix.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/fr.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
     <script>
         flatpickr('#published_at', {
             enableTime: true,
             "locale" : "fr"
         });
 
+        $(document).ready(function() {
+            $('.tags-selector').select2();
+        });
     </script>
 @endsection
 
 @section('css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.1/trix.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+
 @endsection

@@ -101,6 +101,10 @@ class TagsController extends Controller
      */
     public function destroy(Tag $tag)
     {
+        if($tag->posts->count() > 0){
+            session()->flash('error','Le tag ne peut pas être supprimé, il est associé à des articles !');
+            return redirect()->back();
+        }
         $tag->delete();
 
         session()->flash('success','Le tag a bien été supprimée');
