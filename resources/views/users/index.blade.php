@@ -17,7 +17,7 @@
                     @foreach($users as $user)
                         <tr>
                             <td>
-                                <img width="40px" height="40px" style="border-radius:50%" src="{{Gravatar::src($user->email)}}" alt="">
+                                <img width="40px" height="40px" style="border-radius:50%" src="{{$user->image}}" alt="">
                             </td>
 
                             <td>

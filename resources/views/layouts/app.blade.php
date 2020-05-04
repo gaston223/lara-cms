@@ -55,14 +55,22 @@
                     @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+
+                                <img width="40px" height="40px" style="border-radius:50%" src="{{Auth::user()->image }}" alt="">
                                 {{ Auth::user()->name }} <span class="caret"></span>
+
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                                <a class="dropdown-item" href="{{ route('users.edit-profile') }}">
+                                    <i class="fas fa-users-cog"></i> &nbsp; Mon Profil
+                                </a>
+
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    {{--                                    {{ __('Logout') }}--}}<i class="fas fa-power-off"></i>  &nbsp; Se Déconnecter
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

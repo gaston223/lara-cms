@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Users\UpdateProfileRequest;
 use App\User;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
@@ -33,5 +34,39 @@ class UsersController extends Controller
         return redirect(route('users.index'));
     }
 
+    public function edit()
+    {
+        return view('users.edit')->with('user', auth()->user());
+    }
+
+//    public function update(UpdateProfileRequest $request)
+//    {
+//        $user = auth()->user();
+//
+//        $user->update([
+//            'name' => $request->name,
+//            'about' => $request->about
+//        ]);
+//
+//        session()->flash('success', "Votre profil a bien été modifié");
+//
+//        return redirect()->back();
+//    }
+
+    public function update(UpdateProfileRequest $request)
+    {
+        $user = auth()->user();
+
+        //update le post
+        $user->update([
+            'name' => $request->name,
+            'about' => $request->about,
+            'image' => $request->image
+        ]);
+
+        session()->flash('success', "Votre profil a bien été modifié");
+
+        return redirect()->back();
+    }
 
 }

@@ -62,9 +62,11 @@ class PostsController extends Controller
             'content'=> $request->content,
             'image' =>$image,
             'published_at' =>$request->published_at,
-            'category_id' =>$request->category
+            'user_id' => auth()->user()->id,
         ]);
 
+        $post->category_id=$request['category'];
+        $post->save();
         if($request->tags){
             $post->tags()->attach($request->tags);
         }
@@ -107,6 +109,7 @@ class PostsController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
+        $user = auth()->user();
         $data = $request->only(['title', 'description', 'published_at', 'content']);
 
         //check s'il ya une image
@@ -123,8 +126,7 @@ class PostsController extends Controller
         if($request->tags){
             $post->tags()->sync($request->tags);
         }
-
-
+        $post['user_id'] = $user->id;
         $post['category_id'] = $request->category;
         //update le post
         $post->update($data);
@@ -178,5 +180,45 @@ class PostsController extends Controller
         session()->flash('success', 'L\'article a été restauré avec succès !');
 
         return redirect()->back();
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return Response
+     */
+    public function storebis(CreatePostsRequest $request)
+    {
+        $user = auth()->user();
+        $data = $request->all();
+
+        $post = new Post();
+
+        //check s'il ya une image
+        if($request->hasFile('image')){
+            //si oui upload
+            $image = $request->image->store('posts');
+
+            //supprimer l'ancien
+            $post->deleteImage();
+
+            $data['image'] = $image;
+        }
+
+        if($request->tags){
+            $post->tags()->sync($request->tags);
+        }
+        $post['user_id'] = $user->id;
+        $post['category_id'] = $request->category;
+        //update le post
+        $post->save($data);
+
+        //flash message
+        session()->flash('success', 'L\'Article a bien été modifié');
+
+        // redirection
+        return redirect(route('posts.index'));
     }
 }

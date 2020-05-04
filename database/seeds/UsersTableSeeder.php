@@ -20,7 +20,8 @@ class UsersTableSeeder extends Seeder
                'name' => 'Gaoussou Coulibaly',
                 'email' =>'koulou1er@gmail.com',
                 'role' => 'admin',
-                'password' => Hash::make('password')
+                'password' => Hash::make('password'),
+                'image' => ''
             ]);
         }
     }
