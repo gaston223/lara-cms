@@ -1465,7 +1465,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 .masonry .entry__thumb-link::before {
    content: "";
    display: block;
-   background: rgba(0, 0, 0, 0.8);
+   /*background: rgba(0, 0, 0, 0.8);*/
    opacity: 0;
    visibility: hidden;
    position: absolute;
@@ -1722,7 +1722,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
  *
  * ------------------------------------------------------------------- */
 .s-pageheader {
-   min-height: 174px;
+   min-height: 224px;
    background-image: url(../../images/hero-bg.jpg);
    background-repeat: no-repeat;
    background-position: center center;
@@ -2072,7 +2072,7 @@ body.search-is-visible {
 
 @media only screen and (max-width:600px) {
    .s-pageheader {
-      min-height: 84px;
+      min-height: 120px;
    }
 
    .header__logo img {
@@ -2534,7 +2534,20 @@ body.search-is-visible {
 }
 
 .featured__column--big .entry__category a {
-   background-color: #01aef0;
+   background-color: #679a23;
+}
+#top > section > article > div.s-content__header.col-full > ul > li.cat > span > a{
+    background-color: #679a23;
+    display: inline-block;
+    color: #FFFFFF;
+    padding: 0 1.5rem;
+    font-family: "metropolis-bold", sans-serif;
+    font-size: 1.1rem;
+    line-height: 2.4rem;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    margin-bottom: 2.4rem;
+    margin-top: 1.4rem;
 }
 
 .featured__column--small {
@@ -3401,19 +3414,19 @@ footer h4::after {
  * ## copyright
  * ------------------------------------------------------------------- */
 .s-footer__bottom .s-footer__copyright span {
-   display: inline-block;
-}
+     display: inline-block;
+ }
 
 .s-footer__bottom .s-footer__copyright span > a:hover {
-    color: #82cfcb;
-}
+    color: rgb(130, 207, 203);
 
+}
 
 .s-footer__bottom .s-footer__copyright span::after {
    content: "|";
    display: inline-block;
    padding: 0 1rem 0 1.2rem;
-   color: rgba(255, 255, 255, 0.1);
+   color: rgb(130, 207, 203);
 }
 
 .s-footer__bottom .s-footer__copyright span:last-child::after {
@@ -3493,22 +3506,6 @@ footer h4::after {
       text-align: center;
    }
 .s-footer__copyright a:hover {
-    background-color: #fff;
-      text-align: center;
-   }
-
-}
-
-@media only screen and (max-width:600px) {
-   footer {
-      padding-top: 7.8rem;
-   }
-
-   .s-footer__main .row {
-      max-width: 480px;
-   }
-
-   .s-footer__main h4 {
       padding-bottom: 0;
       margin-bottom: 2.4rem;
    }

@@ -182,43 +182,4 @@ class PostsController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return Response
-     */
-    public function storebis(CreatePostsRequest $request)
-    {
-        $user = auth()->user();
-        $data = $request->all();
-
-        $post = new Post();
-
-        //check s'il ya une image
-        if($request->hasFile('image')){
-            //si oui upload
-            $image = $request->image->store('posts');
-
-            //supprimer l'ancien
-            $post->deleteImage();
-
-            $data['image'] = $image;
-        }
-
-        if($request->tags){
-            $post->tags()->sync($request->tags);
-        }
-        $post['user_id'] = $user->id;
-        $post['category_id'] = $request->category;
-        //update le post
-        $post->save($data);
-
-        //flash message
-        session()->flash('success', 'L\'Article a bien été modifié');
-
-        // redirection
-        return redirect(route('posts.index'));
-    }
 }

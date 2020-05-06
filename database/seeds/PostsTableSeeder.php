@@ -4,6 +4,7 @@ use App\Category;
 use App\Post;
 use App\Tag;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class PostsTableSeeder extends Seeder
 {
@@ -31,13 +32,27 @@ class PostsTableSeeder extends Seeder
             'name' => 'Hiring'
         ]);
 
+        $author1 = App\User::create([
+            'name' => 'Gaoussou Coulibaly',
+            'image' =>'https://pbs.twimg.com/profile_images/1235570962118119424/Q0yEKjH__400x400.jpg',
+            'email' => 'gaoussou.coulibaly@hotmail.com',
+            'password' => Hash::make('password'),
+        ]);
+
+        $author2 = App\User::create([
+            'name' => 'Abdoulaye Coulibaly',
+            'email' => 'abdoulaye.coulibaly@hotmail.com',
+            'image' => 'https://pbs.twimg.com/profile_images/1171776152358268928/wQXHer54_400x400.jpg',
+            'password' => Hash::make('password')
+        ]);
+
         $post1 = Post::create([
             'title' => 'We relocated our office to a new designed garage',
             'description' => 'It is a long established fact that a reader',
             'content' => 'There are many variations of passages of Lorem Ipsum available, by injected humour',
             'category_id' => $category1->id,
             'image' => 'posts/1.jpg',
-            'user_id'=> 1
+            'user_id'=> $author1->id
         ]);
 
         $post2 = Post::create([
@@ -46,17 +61,16 @@ class PostsTableSeeder extends Seeder
             'content' => 'There are many variations of passages of Lorem Ipsum available, by injected humour',
             'category_id' => $category2->id,
             'image' =>'posts/1.jpg',
-            'user_id'=> 1,
+            'user_id'=> $author2->id
         ]);
 
-        $post3 = Post::create([
+        //Une autre manière de créer le post
+        $post3 = $author1->posts()->create([
             'title' => 'Best practices for minimalist design with example',
             'description' => 'It is a long established fact that a reader',
             'content' => 'There are many variations of passages of Lorem Ipsum available, by injected humour',
             'category_id' => $category3->id,
             'image' => 'posts/3.jpg',
-            'user_id'=> 1
-
         ]);
 
         $post4 = Post::create([
@@ -65,18 +79,18 @@ class PostsTableSeeder extends Seeder
             'content' => 'There are many variations of passages of Lorem Ipsum available, by injected humour',
             'category_id' => $category4->id,
             'image' => 'posts/4.jpg',
-            'user_id'=> 1
+            'user_id'=> $author2->id
         ]);
 
         $tag1 = Tag::create([
-            'name' => 'job',
+            'name' => 'Développement Web',
         ]);
 
         $tag2 = Tag::create([
-            'name' => 'customers',
+            'name' => 'Marketing',
         ]);
         $tag3 = Tag::create([
-            'name' => 'record',
+            'name' => 'Gestion de Projet',
         ]);
 
         $post1->tags()->attach([$tag1->id, $tag2->id]);
