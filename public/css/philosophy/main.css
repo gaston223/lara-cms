@@ -136,7 +136,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
 
 @media only screen and (max-width:600px) {
    h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
-      margin-top: 5.1rem;
+      margin-top: 0.1rem;
    }
 
 }
@@ -1553,6 +1553,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 
 .masonry .entry__date a {
    color: #858585;
+    padding-left: 1rem;
 }
 
 .masonry .entry__excerpt {
@@ -1563,7 +1564,12 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 .masonry .entry__meta {
    font-family: "metropolis-semibold", sans-serif;
    font-size: 1.5rem;
-   margin-bottom: 0;
+   /*margin-bottom: 0;*/
+    list-style: none;
+    margin: 0 0 0 5rem;
+    padding: 0;
+    color: #0b0b0b;
+    line-height: 1.5;
 }
 
 .masonry .entry__meta a {
@@ -2470,6 +2476,19 @@ body.search-is-visible {
    letter-spacing: .2rem;
    margin-bottom: 2.4rem;
 }
+#top > section.s-content > div.row.masonry-wrap > div > article > div.entry__text > div.entry__header > li > span > a{
+    background-color: #679a23;
+    display: inline-block;
+    color: #FFFFFF;
+    padding: 0 1.5rem;
+    font-family: "metropolis-bold", sans-serif;
+    font-size: 1rem;
+    line-height: 2.4rem;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    margin-bottom: 2.4rem;
+    margin-top: 1.4rem;
+}
 
 .featured .entry__category a {
    display: inline-block;
@@ -2483,9 +2502,22 @@ body.search-is-visible {
 
 .featured .entry__profile-pic {
    float: left;
-   height: 4.2rem;
-   width: 4.2rem;
-   margin-top: -.9rem;
+    height: 4.2rem;
+    width: 4.2rem;
+    margin-top: -.9rem;
+}
+
+#top > section.s-content > div.row.masonry-wrap > div > article> div.entry__text > div.entry__info > a{
+    float: left;
+    height: 4.2rem;
+    width: 4.2rem;
+    margin-top: -.9rem;
+    border-radius: 50%;
+    list-style: none;
+}
+
+#top > section.s-content > div.row.masonry-wrap > div > article> div.entry__text > div.entry__info > a img{
+    border-radius: 50%;
 }
 
 .featured .entry__profile-pic img {
@@ -2866,6 +2898,7 @@ html.no-csstransitions .featured {
 @media only screen and (max-width:400px) {
    .featured__column .entry {
       height: 288px;
+       margin-top:2.4rem;
    }
 
    .featured__column .entry h1 {
@@ -3646,7 +3679,7 @@ footer h4::after {
  * ## post tags
  * ------------------------------------------------------------------- */
 .s-content__tags {
-   margin-top: 6rem;
+   /*margin-top: 6rem;*/
    font-family: "metropolis-regular", sans-serif;
 }
 

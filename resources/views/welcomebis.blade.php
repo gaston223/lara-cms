@@ -116,7 +116,7 @@
 
                                 <ul class="entry__meta">
                                     <li><a href="{{route('blog.show', $posts[0]->id)}}">{{$posts[0]->user->name??''}}</a></li>
-                                    <li>{{$posts[0]->created_at??''}}</li>
+                                    <li>{{$posts[0]->created_at->format('d/m/Y')??''}}</li>
                                 </ul>
                             </div>
                         </div> <!-- end entry__content -->
@@ -135,12 +135,12 @@
 
                             <div class="entry__info">
                                 <a href="{{route('blog.show', $posts[1]->id)}}" class="entry__profile-pic">
-                                    <img class="avatar" src="{{url($posts[1]->user->image??'')}}" alt="">
+                                    <img class="avatar" src="{{asset($posts[1]->user->image??'')}}" alt="">
                                 </a>
 
                                 <ul class="entry__meta">
                                     <li><a href="{{route('blog.show', $posts[1]->id)}}">{{$posts[1]->user->name??''}}</a></li>
-                                    <li>{{$posts[1]->created_at??''}}</li>
+                                    <li>{{$posts[1]->created_at->format('d/m/Y')??''}}</li>
                                 </ul>
                             </div>
                         </div> <!-- end entry__content -->
@@ -161,7 +161,7 @@
 
                                 <ul class="entry__meta">
                                     <li><a href="{{route('blog.show', $posts[2]->id)}}">{{$posts[2]->user->name??''}}</a></li>
-                                    <li>{{$posts[2]->created_at??''}}</li>
+                                    <li>{{$posts[2]->created_at->format('d/m/Y')??''}}</li>
                                 </ul>
                             </div>
                         </div> <!-- end entry__content -->
@@ -195,10 +195,11 @@
                         </a>
                     </div>
                     <div class="entry__text">
+
                         <div class="entry__header">
-                            <div class="entry__date">
-                                <a href="{{route('blog.show', $post->id)}}">{{$post->created_at}}</a>
-                            </div>
+                            <li style="list-style: none" class="cat mt-5 text-center">
+                                <span class="entry__category featured"><a href="#0"> {{$post->category->name}}</a></span>
+                            </li>
                             <h1 class="entry__title"><a href="{{route('blog.show', $post->id)}}">{{$post->title}}</a></h1>
                         </div>
                         <div class="entry__excerpt">
@@ -206,13 +207,33 @@
                                {{$post->description}}
                             </p>
                         </div>
+
+                        <div class=" entry__info">
+                            <a href="{{route('blog.show', $post->id)}}" class="entry__profile-pic">
+                                <img class="avatar" src="{{asset($post->user->image)}}" alt="">
+                            </a>
+
+                            <ul class="entry__meta">
+                                <li><a href="{{route('blog.show', $post->id)}}">{{$post->user->name??''}}</a><br>
+
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="entry__date">
+                            <a href="{{route('blog.show', $post->id)}}">Crée le {{($post->created_at)->format('d/m/Y')}}</a>
+                        </div>
                         <div class="entry__meta">
-                                <span class="entry__meta-links">
-                                    <a href="category.html">{{$post->category->name}}</a>
-                                </span>
 {{--                                <span class="entry__meta-links">--}}
-{{--                                    <a href="category.html">{{$post->tags->name}}</a>--}}
+{{--                                    <a href="category.html">{{$post->category->name}}</a>--}}
 {{--                                </span>--}}
+                            <p class="s-content__tags">
+
+                                <span class="s-content__tag-list">
+                                    @foreach($post->tags as $tag)
+                                        <a href="#0">{{isset($tag) ? $tag->name : ''}}</a>
+                                    @endforeach
+                                </span>
+                            </p> <!-- end s-content__tags -->
 
                         </div>
                     </div>
