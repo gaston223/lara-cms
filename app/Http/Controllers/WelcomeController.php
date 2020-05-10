@@ -12,17 +12,13 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        $posttrends = DB::table('posts')
-            ->orderBy('created_at','desc')
-            ->limit(3)
-//            ->join('categories')
-            ->get();
+        $postsPaginate = Post::orderBy('created_at', 'desc')->simplePaginate(8);
 
         return view('welcomebis')
             ->with('categories', Category::all())
             ->with('tags', Tag::all())
-             ->with('posts', Post::orderBy('created_at','desc')->get())
-           // ->with('posts', $posttrends)
+            ->with('posts', Post::orderBy('created_at','desc')->get())
+            ->with('postsPaginate', $postsPaginate)
             ;
     }
 }

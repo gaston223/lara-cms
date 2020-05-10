@@ -181,12 +181,12 @@
 
 ================================================== -->
 
-<section class="s-content">
+<section class="s-content" id="s-content">
 
     <div class="row masonry-wrap">
         <div class="masonry">
             <div class="grid-sizer"></div>
-            @foreach($posts as $post)
+            @foreach($postsPaginate as $post)
                 <article class="masonry__brick entry format-standard" data-aos="fade-up">
                     <div class="entry__thumb">
                         <a href="{{route('blog.show', $post->id)}}" class="entry__thumb-link">
@@ -253,23 +253,26 @@
 
 {{--            </article> <!-- end article -->--}}
 
-
         </div> <!-- end masonry -->
-    </div> <!-- end masonry-wrap -->
+
+    </div> <!-- end masonry-wrap  -->
+
+
     <div class="row">
         <div class="col-full">
             <nav class="pgn">
-                <ul>
-                    <li><a class="pgn__prev" href="#0">Prev</a></li>
-                    <li><a class="pgn__num" href="#0">1</a></li>
-                    <li><span class="pgn__num current">2</span></li>
-                    <li><a class="pgn__num" href="#0">3</a></li>
-                    <li><a class="pgn__num" href="#0">4</a></li>
-                    <li><a class="pgn__num" href="#0">5</a></li>
-                    <li><span class="pgn__num dots">…</span></li>
-                    <li><a class="pgn__num" href="#0">8</a></li>
-                    <li><a class="pgn__next" href="#0">Next</a></li>
-                </ul>
+{{--                <ul>--}}
+{{--                    <li><a class="pgn__prev" href="#0">Prev</a></li>--}}
+{{--                    <li><a class="pgn__num" href="#0">1</a></li>--}}
+{{--                    <li><span class="pgn__num current">2</span></li>--}}
+{{--                    <li><a class="pgn__num" href="#0">3</a></li>--}}
+{{--                    <li><a class="pgn__num" href="#0">4</a></li>--}}
+{{--                    <li><a class="pgn__num" href="#0">5</a></li>--}}
+{{--                    <li><span class="pgn__num dots">…</span></li>--}}
+{{--                    <li><a class="pgn__num" href="#0">8</a></li>--}}
+{{--                    <li><a class="pgn__next" href="#0">Next</a></li>--}}
+{{--                </ul>--}}
+                {{$postsPaginate->links()}}
             </nav>
         </div>
     </div>
