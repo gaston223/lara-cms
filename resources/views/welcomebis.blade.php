@@ -75,10 +75,10 @@
 
             <div class="header__search">
 
-                <form role="search" method="get" class="header__search-form" action="#">
+                <form role="search" method="get" class="header__search-form" action="{{route('welcome')}}">
                     <label>
-                        <span class="hide-content">Search for:</span>
-                        <input type="search" class="search-field" placeholder="Type Keywords" value="" name="s" title="Search for:" autocomplete="off">
+                        <span class="hide-content">Rechercher un article:</span>
+                        <input type="search" class="search-field" placeholder="Tapez des mots-clés" value="{{request()->query('search')}}" name="search" title="Search for:" autocomplete="off">
                     </label>
                     <input type="submit" class="search-submit" value="Search">
                 </form>
@@ -186,7 +186,7 @@
     <div class="row masonry-wrap">
         <div class="masonry">
             <div class="grid-sizer"></div>
-            @foreach($postsPaginate as $post)
+            @forelse($postsPaginate as $post)
                 <article class="masonry__brick entry format-standard" data-aos="fade-up">
                     <div class="entry__thumb">
                         <a href="{{route('blog.show', $post->id)}}" class="entry__thumb-link">
@@ -238,7 +238,10 @@
                         </div>
                     </div>
                 </article> <!-- end article -->
-            @endforeach
+            @empty
+
+            <p class="text-center">Pas de résultats trouvé pour votre recherche <strong>"{{request()->query('search')}}"</strong> 😥</p>
+            @endforelse
 
 
 {{--            <article class="masonry__brick entry format-quote" data-aos="fade-up">--}}
@@ -272,7 +275,7 @@
 {{--                    <li><a class="pgn__num" href="#0">8</a></li>--}}
 {{--                    <li><a class="pgn__next" href="#0">Next</a></li>--}}
 {{--                </ul>--}}
-                {{$postsPaginate->links()}}
+                {{$postsPaginate->appends(['search' =>request()->query('search')])->links()}}
             </nav>
         </div>
     </div>

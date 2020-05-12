@@ -12,7 +12,14 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        $postsPaginate = Post::orderBy('created_at', 'desc')->simplePaginate(8);
+        $search=request()->query('search');
+        if($search){
+            $postsPaginate = Post::where('title', 'LIKE', "%{$search}%")->simplePaginate(8);
+        }else{
+            $postsPaginate =  $postsPaginate = Post::orderBy('created_at', 'desc')->simplePaginate(8);
+        }
+
+
 
         return view('welcomebis')
             ->with('categories', Category::all())
