@@ -19,13 +19,11 @@ class WelcomeController extends Controller
             $postsPaginate =  $postsPaginate = Post::orderBy('created_at', 'desc')->simplePaginate(8);
         }
 
-
-
         return view('welcomebis')
-            ->with('categories', Category::all())
-            ->with('tags', Tag::all())
-            ->with('posts', Post::orderBy('created_at','desc')->get())
-            ->with('postsPaginate', $postsPaginate)
-            ;
+        ->with('categories', Category::all())
+        ->with('tags', Tag::all())
+        ->with('posts', Post::orderBy('created_at','desc')->get())
+        ->with('postsPaginate', $postsPaginate)
+        ;
     }
 }

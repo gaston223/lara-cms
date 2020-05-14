@@ -1908,7 +1908,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 .header__search-form::after {
-   content: "Press Enter to begin your search.";
+   /*content: "Press Enter to begin your search.";*/
    display: block;
    letter-spacing: 0.6px;
    font-size: 1.6rem;
@@ -1961,6 +1961,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
    color: #FFFFFF;
    text-align: center !important;
    opacity: 1;
+
 }
 
 .header__search-form input[type="search"]:focus {
@@ -1968,7 +1969,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 .header__search-form input[type="submit"] {
-   display: none;
+   /*display: none;*/
 }
 
 body.search-is-visible {
@@ -2002,7 +2003,7 @@ body.search-is-visible {
    text-transform: uppercase;
    letter-spacing: 2px;
    line-height: 21px;
-   content: "Search";
+   content: "Rechercher";
    display: block;
    color: #FFFFFF;
    float: left;
