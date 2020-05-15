@@ -5,7 +5,7 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>Standard Post Format - Philosophy</title>
+    <title>{{$post->title}}</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -88,7 +88,7 @@
                 <br>
                 <li class="cat mt-5">
 
-                    <span class="entry__category featured"><a href="#0"> {{$post->category->name}}</a></span>
+                    <span class="entry__category featured"><a href="{{route('blog.category',$post->category->id)}}"> {{$post->category->name}}</a></span>
                 </li>
             </ul>
         </div> <!-- end s-content__header -->
@@ -108,13 +108,13 @@
             <div id="content-post">
                 {!! $post->content !!}
             </div>
-
+            <div class="addthis_inline_share_toolbox"></div>
             <p class="s-content__tags">
                 <span>Tags</span>
 
                 <span class="s-content__tag-list">
                     @foreach($post->tags as $tag)
-                        <a href="#0">{{$tag->name}}</a>
+                        <a href="{{route('blog.tag', $tag->id)}}">{{$tag->name}}</a>
                         @endforeach
                     </span>
             </p> <!-- end s-content__tags -->
@@ -188,6 +188,7 @@
 <script src="{{asset('js/philosophy/plugins.js')}}"></script>
 <script src="{{asset('js/philosophy/main.js')}}"></script>
 
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ebec71263ac7468"></script>
 </body>
 
 </html>

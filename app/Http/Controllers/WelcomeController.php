@@ -13,17 +13,17 @@ class WelcomeController extends Controller
     public function index()
     {
         $search=request()->query('search');
-        if($search){
-            $postsPaginate = Post::where('title', 'LIKE', "%{$search}%")->simplePaginate(8);
-        }else{
-            $postsPaginate =  $postsPaginate = Post::orderBy('created_at', 'desc')->simplePaginate(8);
-        }
+//        if($search){
+//            $postsPaginate = Post::where('title', 'LIKE', "%{$search}%")->simplePaginate(8);
+//        }else{
+//            $postsPaginate =  $postsPaginate = Post::orderBy('created_at', 'desc')->simplePaginate(8);
+//        }
 
         return view('welcomebis')
         ->with('categories', Category::all())
         ->with('tags', Tag::all())
         ->with('posts', Post::orderBy('created_at','desc')->get())
-        ->with('postsPaginate', $postsPaginate)
+        ->with('postsPaginate', Post::searched()->orderBy('created_at', 'desc')->simplePaginate(8))
         ;
     }
 }

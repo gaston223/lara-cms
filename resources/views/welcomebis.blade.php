@@ -223,9 +223,7 @@
                             <a href="{{route('blog.show', $post->id)}}">Crée le {{($post->created_at)->format('d/m/Y')}}</a>
                         </div>
                         <div class="entry__meta">
-{{--                                <span class="entry__meta-links">--}}
-{{--                                    <a href="category.html">{{$post->category->name}}</a>--}}
-{{--                                </span>--}}
+
                             <p class="s-content__tags">
 
                                 <span class="s-content__tag-list">
@@ -244,18 +242,6 @@
             @endforelse
 
 
-{{--            <article class="masonry__brick entry format-quote" data-aos="fade-up">--}}
-
-{{--                <div class="entry__thumb">--}}
-{{--                    <blockquote>--}}
-{{--                        <p>Good design is making something intelligible and memorable. Great design is making something memorable and meaningful.</p>--}}
-
-{{--                        <cite>Dieter Rams</cite>--}}
-{{--                    </blockquote>--}}
-{{--                </div>--}}
-
-{{--            </article> <!-- end article -->--}}
-
         </div> <!-- end masonry -->
 
     </div> <!-- end masonry-wrap  -->
@@ -264,17 +250,6 @@
     <div class="row">
         <div class="col-full">
             <nav class="pgn">
-{{--                <ul>--}}
-{{--                    <li><a class="pgn__prev" href="#0">Prev</a></li>--}}
-{{--                    <li><a class="pgn__num" href="#0">1</a></li>--}}
-{{--                    <li><span class="pgn__num current">2</span></li>--}}
-{{--                    <li><a class="pgn__num" href="#0">3</a></li>--}}
-{{--                    <li><a class="pgn__num" href="#0">4</a></li>--}}
-{{--                    <li><a class="pgn__num" href="#0">5</a></li>--}}
-{{--                    <li><span class="pgn__num dots">…</span></li>--}}
-{{--                    <li><a class="pgn__num" href="#0">8</a></li>--}}
-{{--                    <li><a class="pgn__next" href="#0">Next</a></li>--}}
-{{--                </ul>--}}
                 {{$postsPaginate->appends(['search' =>request()->query('search')])->links()}}
             </nav>
         </div>
@@ -293,6 +268,7 @@
     <script src="{{asset('js/philosophy/plugins.js')}}"></script>
     <script src="{{asset('js/philosophy/main.js')}}"></script>
 @show
+
 </body>
 
 </html>
