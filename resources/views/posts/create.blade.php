@@ -111,6 +111,7 @@
     <script>
         flatpickr('#published_at', {
             enableTime: true,
+            enableSeconds:true,
             "locale" : "fr"
         });
 

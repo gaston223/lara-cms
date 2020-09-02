@@ -26,7 +26,7 @@
 
                 @if(isset($user->image))
                     <div class="form-group">
-                        <img src="{{$user->image}}" alt="" style="width:100px">
+                        <img src="{{ Gravatar::src($post->user->image) }}" alt="" style="width:100px">
                     </div>
                 @endif
 

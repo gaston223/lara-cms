@@ -120,7 +120,8 @@
             </p> <!-- end s-content__tags -->
 
             <div class="s-content__author">
-                <img src="{{asset($post->user->image)}}" alt="">
+
+                <img src="{{ Gravatar::src($post->user->image) }}">
 
                 <div class="s-content__author-about">
                     <h4 class="s-content__author-name">

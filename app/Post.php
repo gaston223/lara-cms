@@ -64,4 +64,5 @@ class Post extends Model
         return $query
             ->where('title', 'LIKE', "%{$search}%");
     }
+
 }

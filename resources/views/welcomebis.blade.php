@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="{{asset('css/philosophy/main.css')}}">
         <script src="{{asset('js/philosophy/modernizr.js')}}"></script>
         <script src="{{asset('js/philosophy/pace.min.js')}}"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Alata&family=Open+Sans&display=swap" rel="stylesheet">
+{{--        <script src="https://kit.fontawesome.com/3a35c19d1d.js" crossorigin="anonymous"></script>--}}
     @show
 
     <!-- script
@@ -50,7 +52,11 @@
             <div class="header__logo mb-5 pb-5">
                 <a class="logo" href="{{route('welcome')}}">
                     <!-- <img src="images/logo.svg" alt="Homepage"> -->
-                    <h1 style="color: #fff;">#BLOGIFY.</h1>
+                    <h1 style="color: #fff; font-family: 'Alata', 'sans-serif';">
+{{--                        <i class="fas fa-chart-line"></i>--}}
+{{--                        <i class="fas fa-chevron-circle-up"></i>--}}
+                        <i class="fa fa-code"></i>
+                        &nbsp;StepUp.</h1>
                     <!-- <p style="color: #fff;">Le blog qui te parle de dev !</p> -->
 
                 </a>
@@ -58,17 +64,15 @@
 
             <ul class="header__social">
                 <li>
-                    <a href="#0"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                </li>
-                <li>
                     <a href="#0"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                 </li>
                 <li>
-                    <a href="#0"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                    <a href="#0"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                 </li>
                 <li>
-                    <a href="#0"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                    <a href="#0"><i class="fa fa-github" aria-hidden="true"></i></a>
                 </li>
+
             </ul> <!-- end header__social -->
 
             <a class="header__search-trigger" href="#0"></a>

@@ -9,8 +9,6 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -56,7 +54,7 @@
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
 
-                                <img width="40px" height="40px" style="border-radius:50%" src="{{Auth::user()->image }}" alt="">
+                                <img width="40px" height="40px" style="border-radius:50%" src="{{ Gravatar::src(Auth::user()->image) }}" alt="">
                                 {{ Auth::user()->name }} <span class="caret"></span>
 
                             </a>
